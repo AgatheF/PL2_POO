@@ -1,0 +1,17 @@
+   # un pentagone rouge
+A REBOUND 6 6
+F POLYR 100 100 40 5 255 0 0
+# un octogone noir incorrect (il manque la composante bleu de la couleur)
+F POLYR 200 190 40 8 255 255
+A CAP 10 15 
+# un octogone vert
+F POLYR 200 190 40 8 0 255 0
+# une etoile jaune
+F ETOILE 230 290 35 0 255 0
+# un hexagone bleu
+F POLYR 300 270 30 6 0 0 255
+# un octogone noir incorrect
+F POLYR 200 190 40 8.0 0 255 0
+# un cercle jaune
+A CIRCULAR 110 150 100 0 10
+F CERCLE 50 60 35 0 255 0

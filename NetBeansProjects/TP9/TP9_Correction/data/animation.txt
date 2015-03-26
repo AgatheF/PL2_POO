@@ -1,0 +1,32 @@
+# un pentagone rouge fixe
+F POLYR 100 100 40 5 255 0 0
+
+   # un octogone vert animé d'un mouvement avec rebonds
+A REB 5 -5
+F POLYR 200 190 40 8 0 255 0
+
+# un octogone animé d'un mouvement circulaire
+A CIRC 100 190 100 0 5
+F POLYR 200 190 35 8 0 255 255
+
+# un etoile jaune animée se déplaçant aléatoirement
+  A CAP 120 7
+F ETOILE 230 290 35 255 255 0
+
+#un disque magenta animé se déplaçant aléatoirement
+A CAP 190 4 
+F DISQUE 410 300 20 255 0 255
+
+# un hexagone bleu
+F POLYR 300 270 30 6 0 0 255
+
+# une chenille noire à 10 anneaux de rayon 10
+C 10 10 0 0 0
+
+#une chenille verte à 20 anneaux de rayon 8
+C 8 20 0 255 0
+
+#une chenille rouge à 14 anneaux de rayon 7 qui tourne en rond
+A CIRC 240 240 100 0 -5
+C 7 14 255 0 0
+
