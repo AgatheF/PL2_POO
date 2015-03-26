@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/AppliCafeV4_1">
+  <!--
+     <Resource auth="Container" 
+            driverClassName="org.postgresql.Driver" 
+            maxActive="10" maxIdle="3" 
+            maxWait="10000" 
+            name="jdbc/BD_CAFES" 
+            password="xxxxx" 
+            type="javax.sql.DataSource" 
+            url="jdbc:postgresql://localhost:5432/test" 
+            username="yyyyyy"/>
+            -->
+  <Resource auth="Container" 
+            driverClassName="oracle.jdbc.OracleDriver" 
+            maxActive="10"
+            maxIdle="3" 
+            maxWait="10000" 
+            name="jdbc/BD_CAFES" 
+            password="xxxxxxx" 
+            type="javax.sql.DataSource" 
+            url="jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima"
+            username="genoudph"/>
+</Context>

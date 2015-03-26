@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <!--
+      configuration de la servlet d'initialisation d'une partie. Cela permet
+      en particulier de définir les paramètres définissant le nombre caché
+    -->  
+    <servlet>
+        <servlet-name>InitialiseurPartie</servlet-name>
+        <servlet-class>
+            im2ag.m2cci.tp11.nbrecache.servlets.ActionInitialiser
+        </servlet-class>
+        <init-param>
+            <param-name>borneMin</param-name>
+            <param-value>-50</param-value>
+        </init-param>
+        <init-param>
+            <param-name>borneMax</param-name>
+            <param-value>50
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>nbessaisMax</param-name>
+            <param-value>10</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InitialiseurPartie</servlet-name>
+        <url-pattern>/debuterPartie</url-pattern>
+    </servlet-mapping>
+ 
+    <!--
+    La configuration des filtres est faite dans le fichier de déploiement
+    ce qui permet de contrôler leur ordre d'application
+    -->
+    <filter>
+        <filter-name>filtre1</filter-name>
+        <filter-class>im2ag.m2cci.tp11.nbrecache.filters.Filtre1</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>filtre1</filter-name>
+        <url-pattern>/abandonner</url-pattern>
+        <url-pattern>/jouer</url-pattern>
+        <url-pattern>/debuterPartie</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter>
+        <filter-name>filtre2</filter-name>
+        <filter-class>im2ag.m2cci.tp11.nbrecache.filters.Filtre2</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>filtre2</filter-name>
+        <url-pattern>/jouer</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <session-config>
+        <session-timeout>
+            10
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>debuterPartie</welcome-file>
+    </welcome-file-list> 
+</web-app>

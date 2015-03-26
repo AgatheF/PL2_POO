@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/AppliCafeV3">
+  <Resource name="jdbc/BD_CAFES"
+    auth="Container"
+    type="javax.sql.DataSource"
+    maxActive="10"
+    maxIdle="3"
+    maxWait="10000"
+    username="fureta"
+    password="bd2015"
+    driverClassName="oracle.jdbc.OracleDriver"
+    url="jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima"/>
+</Context>
