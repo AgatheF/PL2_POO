@@ -1,0 +1,42 @@
+/** 
+*   Programme  qui lit au clavier une suite de nombres réels positifs ou nuls (correspondant *	à des notes), terminée par la valeur -1, et calcule la moyenne olympique de ces valeurs, *	c'est à dire la moyenne des notes sans prendre en compte la note la plus élevée ni la note *	la moins élevée.	
+*/
+
+import java.util.Scanner;
+
+public class MoyenneOlympique {
+	public static void main(String[] args){
+	
+	Scanner sc =  new Scanner(System.in);
+	
+   int noteCourante=0;
+	float noteMin=20.0; // initialisation max et min
+	float noteMax=-1.0;
+	float sommeNote=0.0;
+	do{
+		nombreNote=nombreNote+1;
+		Scanner.print.out("entrez une note>= a 0 ou -1 pour arreter");
+		float noteCourante = sc.nextFloat();
+		if (noteCourante<noteMin){
+			noteMin=noteCourante;
+			sommeNote=sommeNote+noteMin;
+		}
+		else if (noteCourante>noteMax){
+			noteMax=noteCourante;
+			sommeNote=sommeNote+noteMax;
+		}
+		else{
+			sommeNote=sommeNote+noteCourante;
+		}
+    }
+	while(noteCourante!=-1.0);
+	
+	float moyenne=sommeNote%nombreNote;
+	System.out.println("La moyenne olympique est de: " + moyenne);
+		
+		
+		
+	}
+}
+
+

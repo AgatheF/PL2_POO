@@ -1,0 +1,8 @@
+/* The HelloWordApp class for printing "Hello Word" */
+
+class HelloWordApp{
+	public static void main (String[] args){
+	System.out.println("Hello Word!"); // affiche la chaine de caractere
+	}
+
+}
