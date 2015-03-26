@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>TestEnsembleDeLettre.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;EnsembleDeLettre&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">TestEnsembleDeLettre.java</span></div><h1>TestEnsembleDeLettre.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author fureta
+ */
+
+<span class="nc" id="L12">public class TestEnsembleDeLettre {</span>
+    public static void main(String[] args) {
+        
+        //test ensemble vide
+<span class="fc" id="L16">        EnsembleDeLettre e1= new EnsembleDeLettre(); //ensemble vide</span>
+<span class="fc" id="L17">        System.out.println(e1); // utilisation automatique de toString</span>
+        
+        //test constructeur a partir d'une chaine
+        String chaine1;
+<span class="fc" id="L21">        chaine1 = &quot;abcde&quot;;</span>
+<span class="fc" id="L22">        EnsembleDeLettre e2= new EnsembleDeLettre(chaine1);</span>
+<span class="fc" id="L23">        System.out.println(e2); </span>
+        
+        //test constructeur a partir d'une chaine
+<span class="fc" id="L26">        EnsembleDeLettre e3= new EnsembleDeLettre(2);</span>
+<span class="fc" id="L27">        System.out.println(e3); </span>
+        
+        //test methode cardinal
+<span class="fc" id="L30">        int cardinal=e2.cardinal();</span>
+<span class="fc" id="L31">        System.out.println(&quot;cardinal= &quot;+cardinal);</span>
+        
+        //test methode estVide?
+<span class="fc" id="L34">        boolean estVide=e1.estVide();</span>
+<span class="fc" id="L35">        System.out.println(&quot;Est vide?&quot;+estVide);</span>
+        
+        //test methode estIncluDans?   ***************** A REVOIR
+        String chaine2;
+<span class="fc" id="L39">        chaine2 = &quot;abxyz&quot;;</span>
+<span class="fc" id="L40">        EnsembleDeLettre e4= new EnsembleDeLettre(chaine2);</span>
+<span class="fc" id="L41">        System.out.println(e4); </span>
+<span class="fc" id="L42">        boolean estInclu=e2.estIncluDans(e3);</span>
+<span class="fc" id="L43">        System.out.println(&quot;Est Inclu Dans? &quot;+estInclu);</span>
+        
+        //test methode lettreEstDans?
+<span class="fc" id="L46">        boolean lettreEstDans=e2.lettreEstDans('v');</span>
+<span class="fc" id="L47">        System.out.println(&quot;Lettre est dans? &quot;+ lettreEstDans);</span>
+        
+        //test intersectionensemble
+        EnsembleDeLettre eInter;
+<span class="fc" id="L51">        eInter=e2.intersectionEnsemble(e4);</span>
+<span class="fc" id="L52">        System.out.println(&quot;Intersection: &quot;+ eInter );</span>
+<span class="fc" id="L53">    }</span>
+    
+    
+ 
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.2.201409121644</span></div></body></html>

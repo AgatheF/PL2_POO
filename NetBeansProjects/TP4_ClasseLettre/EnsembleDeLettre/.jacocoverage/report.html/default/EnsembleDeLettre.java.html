@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>EnsembleDeLettre.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;EnsembleDeLettre&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">EnsembleDeLettre.java</span></div><h1>EnsembleDeLettre.java</h1><pre class="source lang-java linenums">
+import com.sun.corba.se.spi.presentation.rmi.PresentationDefaults;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ *
+ * @author fureta
+ */
+public class EnsembleDeLettre {
+
+    // creation d'un tableau de booleen pour representation de l'ensemble
+<span class="fc" id="L16">    boolean[] present = new boolean[26];</span>
+
+    /**
+     * Constructeurs
+     */
+    /**
+     * Ensemble de lettre vide créé un nouvel ensemble initialement vide
+     */
+<span class="fc" id="L24">    public EnsembleDeLettre() {</span>
+//        for (int i = 0; i &lt; present.length; i++) {
+//            present[i] = false;
+//        }
+<span class="fc" id="L28">    }</span>
+
+    /**
+     * Ensemble de lettre Créer un nouvel ensemble qui contient toutes les
+     * lettres présentes dans la chaîne.
+     *
+     * @param s
+     */
+<span class="fc" id="L36">    public EnsembleDeLettre(String s) {</span>
+
+<span class="fc" id="L38">        String s2 = s.toLowerCase();</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        for (int i = 0; i &lt; s2.length(); i++) {</span>
+<span class="fc" id="L40">            int rang = (int) s2.charAt(i) - (int) 'a';</span>
+            //entier(lettre i) - entier(a)= rang i dans le tableau present
+<span class="fc" id="L42">            present[rang] = true;</span>
+        }
+<span class="fc" id="L44">    }</span>
+    
+
+    /**
+     * Ensemble de lettre aléatoire créé un nouvel ensemble de lettre de taille
+     * nbLettre saisie en parametre
+     *
+     * @param nbLettre
+     */
+<span class="fc" id="L53">    public EnsembleDeLettre(int nbLettre) {</span>
+        int rangAleatoire;
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        for (int i = 0; i &lt; nbLettre; i++) {</span>
+            // rang de 0 à 25: (nb aleatoire &lt; 1) * 26
+            do {
+<span class="fc" id="L58">                rangAleatoire = (int) (Math.random() * 26);</span>
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">            } while (present[rangAleatoire]); // on retire si la lettre piochee etait deja true</span>
+            
+<span class="fc" id="L61">            present[rangAleatoire] = true;   </span>
+        }
+<span class="fc" id="L63">    }</span>
+
+    /**
+     * Méthodes
+     */
+    /**
+     * toString: Convertit et met en forme l'ensemble de lettre
+     *
+     * @return
+     */
+    public String toString() {
+<span class="fc" id="L74">        String chaineRes = &quot;{&quot;;</span>
+        // comment ecrire :chaineRes[0]='{';
+
+<span class="fc bfc" id="L77" title="All 2 branches covered.">        for (int i = 0; i &lt; present.length; i++) {</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">            if (present[i]) {</span>
+<span class="fc" id="L79">                char c = convertToChar(i);</span>
+<span class="fc" id="L80">                chaineRes = chaineRes + c;</span>
+            }
+        }
+<span class="fc" id="L83">        chaineRes = chaineRes + '}';</span>
+<span class="fc" id="L84">        return chaineRes;</span>
+    }
+
+    /**
+     * convertToChar
+     *
+     * @param i
+     * @return un caractere correspondant a l'indice
+     */
+    public char convertToChar(int i) {
+<span class="fc" id="L94">        return (char) (i + (int) ('a'));</span>
+
+    }
+
+    /**
+     * cardinal calcul le nombre d'element dans l'ens
+     *
+     * @return le nombre d’éléments de l’ensemble
+     */
+    public int cardinal() {
+<span class="fc" id="L104">        int cardinal = 0;</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">        for (int i = 0; i &lt; present.length; i++) {</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">            if (present[i] == true) {</span>
+<span class="fc" id="L107">                cardinal = cardinal + 1;</span>
+            }
+        }
+<span class="fc" id="L110">        return cardinal;</span>
+    }
+
+    /**
+     * estVide test si l'ensemble est vide
+     *
+     * @return vrai si elle est vide fausse sinon
+     */
+    public boolean estVide() {
+<span class="pc bpc" id="L119" title="1 of 2 branches missed.">        return (this.cardinal() == 0);</span>
+
+    }
+
+    /**
+     * estIncluDans test si la chaine en parametre est inclut dans
+     * l'ensemble=objet sur lequel la méthode est appliquée (ou tester inverse?)
+     *
+     * @param e
+     * @return vrai si la chaine est inclut faux sinon
+     */
+    public boolean estIncluDans(EnsembleDeLettre e) {
+
+<span class="fc" id="L132">        int i = 0;</span>
+<span class="pc bpc" id="L133" title="1 of 2 branches missed.">        while (i &lt; present.length) {</span>
+<span class="pc bpc" id="L134" title="1 of 4 branches missed.">            if (e.present[i] == true &amp;&amp; e.present[i] != this.present[i]) {</span>
+<span class="fc" id="L135">                return false;</span>
+            } else {
+<span class="fc" id="L137">                i++;</span>
+            }
+        }
+<span class="nc" id="L140">        return true;</span>
+        //vrai si on est pas sorti avant d'avoir parcouru tout le tableau
+    }
+
+    /**
+     * lettreEstDans test si une lettre st dans l'ensemble
+     *
+     * @param c
+     * @return vrai si la lettre en parametre est inclut dans l'ensemble
+     */
+    public boolean lettreEstDans(char c) {
+<span class="fc" id="L151">        int rangC = (int) (c) - (int) ('a');</span>
+<span class="pc bpc" id="L152" title="1 of 2 branches missed.">        return (present[rangC] == true);</span>
+    }
+
+    /**
+     * intersectionEnsemble crée un ens contenant les elements appartenant a
+     * l'ens et a un ens donné en parametre
+     *
+     * @param s
+     * @return un ensembleDeLettre contenant l'intersection de l'ens et de s
+     */
+    /**
+     * intersectionEnsemble crée un ens contenant les elements appartenant a
+     * l'ens et a un ens donné en parametre
+     *
+     * @param e
+     * @return un ensembleDeLettre contenant l'intersection de l'ens et de s
+     */
+    public EnsembleDeLettre intersectionEnsemble(EnsembleDeLettre e) {
+<span class="fc" id="L170">        EnsembleDeLettre eInter = new EnsembleDeLettre(); // creation d'un ensemble vide</span>
+<span class="fc" id="L171">        int j = 0;</span>
+<span class="fc bfc" id="L172" title="All 2 branches covered.">        for (int i = 0; i &lt; present.length; i++) {</span>
+<span class="fc bfc" id="L173" title="All 4 branches covered.">            if (this.present[i] == true &amp;&amp; this.present[i] == e.present[i]) {</span>
+<span class="fc" id="L174">                j++;</span>
+<span class="fc" id="L175">                eInter.present[j] = true;</span>
+            }
+        }
+<span class="fc" id="L178">        return eInter;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.2.201409121644</span></div></body></html>
